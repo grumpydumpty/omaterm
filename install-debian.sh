@@ -71,7 +71,7 @@ install_packages() {
 install_npm_tools() {
   section "Installing AI coding assistants..."
   if ! command -v opencode &>/dev/null; then
-    npm install -g @anthropic-ai/opencode
+    npm install -g opencode-ai
   fi
   if ! command -v claude-code &>/dev/null; then
     npm install -g @anthropic-ai/claude-code

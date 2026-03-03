@@ -55,7 +55,7 @@ gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
 install_npm_tools() {
   section "Installing AI coding assistants..."
   if ! command -v opencode &>/dev/null; then
-    npm install -g @anthropic-ai/opencode
+    npm install -g opencode-ai
   fi
   if ! command -v claude-code &>/dev/null; then
     npm install -g @anthropic-ai/claude-code
