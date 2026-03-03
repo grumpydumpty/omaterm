@@ -3,8 +3,7 @@ install_packages() {
   sudo dnf upgrade -y
 
   section "Installing Fedora packages..."
-  sudo dnf group install -y "Development Tools"
-  sudo dnf install -y \
+  sudo dnf install -y @development-tools \
     git openssh-server sudo less net-tools whois \
     starship fzf eza zoxide tmux btop jq man-db tldr \
     vim neovim luarocks \
