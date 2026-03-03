@@ -126,6 +126,7 @@ run_installation() {
 
 # Getting started
 show_banner
+section "Installing Omaterm..."
 
 # Ensure correct git is installed
 if ! command -v git &>/dev/null; then
