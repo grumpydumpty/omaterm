@@ -5,7 +5,7 @@ install_packages() {
 
   section "Installing Debian packages..."
   sudo apt-get install -y \
-    build-essential git openssh-server sudo less net-tools whois \
+    build-essential git openssh-server libssl-dev sudo less net-tools whois \
     fzf eza zoxide tmux btop jq man-db tldr \
     vim neovim luarocks \
     clang llvm rustc libyaml-0-2 \
