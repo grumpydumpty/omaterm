@@ -147,11 +147,11 @@ git clone --depth 1 "$REPO" "$INSTALLER_DIR"
 
 # OS detection and dispatch
 if [ -f /etc/arch-release ]; then
-  source "$INSTALLER_DIR/install-arch.sh"
+  source "$INSTALLER_DIR/install/arch.sh"
 elif [ -f /etc/debian_version ]; then
-  source "$INSTALLER_DIR/install-debian.sh"
+  source "$INSTALLER_DIR/install/debian.sh"
 elif [ -f /etc/fedora-release ]; then
-  source "$INSTALLER_DIR/install-fedora.sh"
+  source "$INSTALLER_DIR/install/fedora.sh"
 else
   echo "Error: Unsupported operating system"
   echo "Omaterm supports Arch Linux, Debian/Ubuntu, and Fedora"
