@@ -10,11 +10,24 @@ install_packages() {
     vim neovim luarocks \
     clang llvm rustc libyaml-0-2 \
     curl wget gpg \
-    github-cli \
-    docker.io docker-buildx docker-compose \
-    tailscale
+    docker.io docker-buildx docker-compose
 
-  # starship (not in Ubuntu repos)
+  # github-cli (not in Debian/Ubuntu repos)
+  if ! command -v gh &>/dev/null; then
+    section "Installing GitHub CLI..."
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list
+    sudo apt-get update
+    sudo apt-get install -y gh
+  fi
+
+  # tailscale (not in Debian/Ubuntu repos)
+  if ! command -v tailscale &>/dev/null; then
+    section "Installing Tailscale..."
+    curl -fsSL https://tailscale.com/install.sh | sh
+  fi
+
+  # starship (not in Debian/Ubuntu repos)
   if ! command -v starship &>/dev/null; then
     section "Installing starship..."
     curl -sS https://starship.rs/install.sh | sh -s -- --yes
