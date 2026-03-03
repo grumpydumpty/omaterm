@@ -142,11 +142,11 @@ run_installation() {
 # OS detection and dispatch
 if [ -f /etc/arch-release ]; then
   source "$SCRIPT_DIR/install-arch.sh"
-elif [ -f /etc/debian_version ] && grep -q "Ubuntu" /etc/os-release 2>/dev/null; then
-  source "$SCRIPT_DIR/install-ubuntu.sh"
+elif [ -f /etc/debian_version ]; then
+  source "$SCRIPT_DIR/install-debian.sh"
 else
   echo "Error: Unsupported operating system"
-  echo "Omaterm supports Arch Linux and Ubuntu 24.04 LTS+"
+  echo "Omaterm supports Arch Linux and Debian/Ubuntu"
   exit 1
 fi
 
