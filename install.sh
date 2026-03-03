@@ -95,8 +95,6 @@ finish() {
 }
 
 run_installation() {
-  show_banner
-
   # OS-specific package installation
   install_packages
 
@@ -125,6 +123,9 @@ run_installation() {
   # Done!
   finish
 }
+
+# Getting started
+show_banner
 
 # Ensure correct git is installed
 if ! command -v git &>/dev/null; then
