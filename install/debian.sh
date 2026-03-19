@@ -14,8 +14,10 @@ install_packages() {
     docker.io docker-compose \
     kitty-terminfo
 
-  # docker-buildx (install separately as it can fail on some Ubuntu versions)
-  sudo apt-get install -y docker-buildx 2>/dev/null || true
+  # docker-buildx (skip if docker-buildx-plugin from Docker's repo is already installed)
+  if ! dpkg -l docker-buildx-plugin &>/dev/null; then
+    sudo apt-get install -y docker-buildx 2>/dev/null || true
+  fi
 
   # tldr: Debian Trixie+ replaced tldr with tealdeer
   if apt-cache show tealdeer &>/dev/null; then
