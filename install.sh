@@ -54,8 +54,13 @@ install_bins() {
 install_mise_tools() {
   section "Installing Ruby + Node..."
   eval "$(mise activate bash)" 2>/dev/null || true
+
   mise use -g node
-  mise use -g ruby
+
+  mise settings add ruby.compile false
+  mise settings add idiomatic_version_file_enable_tools ruby
+  mise use --global ruby
+
   export PATH="$HOME/.local/share/mise/shims:$PATH"
 }
 
