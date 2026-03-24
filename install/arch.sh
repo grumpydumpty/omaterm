@@ -17,16 +17,16 @@ install_packages() {
   section "Installing Arch packages..."
   sudo pacman -Syu --needed --noconfirm "${official_pkgs[@]}"
 
-  if ! command -v yay &>/dev/null; then
-    section "Installing yay..."
-    local tmpdir=$(mktemp -d)
-    git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay"
-    (cd "$tmpdir/yay" && makepkg -si --noconfirm)
-    rm -rf "$tmpdir"
-  fi
+#   if ! command -v yay &>/dev/null; then
+#     section "Installing yay..."
+#     local tmpdir=$(mktemp -d)
+#     git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay"
+#     (cd "$tmpdir/yay" && makepkg -si --noconfirm)
+#     rm -rf "$tmpdir"
+#   fi
 
-  section "Installing AUR packages..."
-  yay -S --needed --noconfirm "${aur_pkgs[@]}"
+#   section "Installing AUR packages..."
+#   yay -S --needed --noconfirm "${aur_pkgs[@]}"
 }
 
 install_npm_tools() {

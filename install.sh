@@ -5,14 +5,14 @@ set -euo pipefail
 show_banner() {
   clear
   echo
-  echo " ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄████████     ███        ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄  
+  echo " ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄████████     ███        ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄
 ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ▀█████████▄   ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄
 ███    ███ ███   ███   ███   ███    ███    ▀███▀▀██   ███    █▀    ███    ███ ███   ███   ███
 ███    ███ ███   ███   ███   ███    ███     ███   ▀  ▄███▄▄▄      ▄███▄▄▄▄██▀ ███   ███   ███
 ███    ███ ███   ███   ███ ▀███████████     ███     ▀▀███▀▀▀     ▀▀███▀▀▀▀▀   ███   ███   ███
 ███    ███ ███   ███   ███   ███    ███     ███       ███    █▄  ▀███████████ ███   ███   ███
 ███    ███ ███   ███   ███   ███    ███     ███       ███    ███   ███    ███ ███   ███   ███
- ▀██████▀   ▀█   ███   █▀    ███    █▀     ▄████▀     ██████████   ███    ███  ▀█   ███   █▀ 
+ ▀██████▀   ▀█   ███   █▀    ███    █▀     ▄████▀     ██████████   ███    ███  ▀█   ███   █▀
                                                                    ███    ███                "
 }
 
@@ -21,7 +21,7 @@ section() {
 }
 
 install_omadots() {
-  curl -fsSL https://raw.githubusercontent.com/omacom-io/omadots/refs/heads/master/install.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/grumpydumpty/omadots/refs/heads/docker/install.sh | bash
 }
 
 install_configs() {
@@ -136,19 +136,19 @@ run_installation() {
   install_bins
 
   # Mise tooling
-  install_mise_tools
+#   install_mise_tools
 
   # OS-specific tools that need npm (installed after mise provides node)
-  install_npm_tools
+#   install_npm_tools
 
   # OS-specific service enabling
-  enable_services
+#   enable_services
 
   # Setup Docker group
-  setup_docker_group
+#   setup_docker_group
 
   # Interactive setup
-  interactive_setup
+#   interactive_setup
 
   # Done!
   finish
@@ -169,11 +169,11 @@ if ! command -v git &>/dev/null; then
   fi
 fi
 
-REPO="https://github.com/omacom-io/omaterm.git"
+REPO="https://github.com/grumpydumpty/omaterm.git"
 INSTALLER_DIR="$(mktemp -d)"
 trap 'rm -rf "$INSTALLER_DIR"' EXIT
 
-git clone --depth 1 "$REPO" "$INSTALLER_DIR"
+git clone -b docker --single-branch --depth 1 "$REPO" "$INSTALLER_DIR"
 
 # OS detection and dispatch
 if [ -f /etc/arch-release ]; then
